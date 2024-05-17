@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
+cd express-app && npm install
 tail -f /dev/null
