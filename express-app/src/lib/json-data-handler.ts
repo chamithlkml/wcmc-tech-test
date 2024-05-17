@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import { ErrorCode } from "../exceptions/http-exception";
+import { ErrorCode, HttpException } from "../exceptions/http-exception";
 import { InternalException } from "../exceptions/internal-exception";
 import DataHandleable from "../interfaces/data-handleable";
 import CountryData from './country-data';
@@ -51,6 +51,20 @@ class JsonDataHandler implements DataHandleable{
     }
 
     return countryMetricsArr?.map((dataObj) => dataObj.country )!
+  }
+
+  async getMetrics(country: string): Promise<object> {
+    await this.loadDataFromFile()
+
+    const countryDataArr = this.countryMetrics?.filter((dataObj) => {
+      return dataObj.country == country;
+    })!
+
+    if(countryDataArr?.length == 0){
+      throw new HttpException('No metrics found', ErrorCode.DATA_NOT_FOUND, 404, 'Data not found');
+    }
+    
+    return countryDataArr[0]
   }
 }
 
