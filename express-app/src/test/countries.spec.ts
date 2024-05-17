@@ -16,3 +16,18 @@ describe('GET /api/countries', () => {
       })
   })
 })
+
+describe('GET /api/countries?prefix', () => {
+  it('Should return an array', (done) => {
+    request(app)
+      .get('/api/countries?prefix=Au')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        if(err) return done(err)
+
+        assert.equal(res.body.includes('Austria'), true)
+        done()
+      })
+  })
+})

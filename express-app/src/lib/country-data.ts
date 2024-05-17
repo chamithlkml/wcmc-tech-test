@@ -2,7 +2,7 @@ import CountriesRetrievable from "../interfaces/countries-retrievable";
 import DataHandleable from "../interfaces/data-handleable";
 
 class CountryData implements CountriesRetrievable {
-  dataHandler: DataHandleable
+  private dataHandler: DataHandleable
 
   // Dependency injection
   constructor(dataHandler: DataHandleable){
