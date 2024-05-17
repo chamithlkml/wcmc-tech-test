@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
     networks:
-      - training-app-net
+      - wcmc-app-net
     volumes:
         - '.:/app'
     depends_on:
@@ -33,9 +33,9 @@ services:
         MYSQL_PASSWORD: '${DB_PASSWORD}'
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-        - 'training-app-mysql:/var/lib/mysql'
+        - 'wcmc-app-mysql:/var/lib/mysql'
     networks:
-        - training-app-net
+        - wcmc-app-net
     healthcheck:
         test:
             - CMD
@@ -45,8 +45,8 @@ services:
         retries: 3
         timeout: 5s
 networks:
-    training-app-net:
+    wcmc-app-net:
         driver: bridge
 volumes:
-    training-app-mysql:
+    wcmc-app-mysql:
         driver: local
