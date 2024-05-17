@@ -33,14 +33,24 @@ class JsonDataHandler implements DataHandleable{
     }
   }
 
-  async getCountries(): Promise<string[]> {
+  async getCountries(prefix: string): Promise<string[]> {
     await this.loadDataFromFile()
 
-    const countries = this.countryMetrics!.map((dataObj: MetricData) => {
-      return dataObj.country;
-    })
+    let countryMetricsArr = this.countryMetrics;
 
-    return countries
+    if(prefix !== ''){
+      const prefixLowercase = prefix.toLowerCase();
+      countryMetricsArr = this.countryMetrics?.filter((dataObj) => {
+        let words = dataObj.country.split(' ');
+        let matchingWords = words.filter((word) => {
+          return word.toLowerCase().startsWith(prefixLowercase);
+        });
+        
+        return matchingWords.length > 0;
+      })!
+    }
+
+    return countryMetricsArr?.map((dataObj) => dataObj.country )!
   }
 }
 

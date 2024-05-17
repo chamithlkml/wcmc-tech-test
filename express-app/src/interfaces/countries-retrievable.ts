@@ -1,5 +1,5 @@
 interface CountriesRetrievable{
-  getCountries(): Promise<string[]>;
+  getCountries(prefix: string): Promise<string[]>;
 }
 
 export default CountriesRetrievable;

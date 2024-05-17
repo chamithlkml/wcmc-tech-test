@@ -7,7 +7,8 @@ const countryData = new CountryData(jsonDataHandler)
 
 export const getCountries = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const countries = await countryData.getCountries()
+    const prefix = !req.query.prefix ? '' : req.query.prefix.toString()
+    const countries = await countryData.getCountries(prefix)
     
     res.json(countries)
   } catch (error) {
