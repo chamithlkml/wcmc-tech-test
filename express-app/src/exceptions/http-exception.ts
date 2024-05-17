@@ -14,5 +14,6 @@ export class HttpException extends Error {
 }
 
 export enum ErrorCode {
-  INTERNAL_ERROR = 1001
+  INTERNAL_ERROR = 1001,
+  ARGUMENT_ERROR = 2001
 }
