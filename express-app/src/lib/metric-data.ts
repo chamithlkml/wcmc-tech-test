@@ -8,7 +8,7 @@ class MetricData implements MetricsRetrievable {
     this.dataHandler = dataHandler
   }
 
-  async getMetrics(country: string): Promise<object> {
+  async getMetrics(country: string): Promise<any> {
       return await this.dataHandler.getMetrics(country)
   }
 }

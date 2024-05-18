@@ -1,5 +1,5 @@
 interface MetricsRetrievable {
-  getMetrics(country: string): Promise<object>
+  getMetrics(country: string): Promise<any>
 }
 
 export default MetricsRetrievable;
