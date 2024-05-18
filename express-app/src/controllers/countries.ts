@@ -2,8 +2,10 @@ import { Request, Response, NextFunction } from 'express'
 import JsonDataHandler from '../lib/json-data-handler'
 import { COUNTRY_METRICS_FILE_PATH } from '../config'
 import CountryData from '../lib/country-data'
-const jsonDataHandler = JsonDataHandler.getInstance(COUNTRY_METRICS_FILE_PATH)
-const countryData = new CountryData(jsonDataHandler)
+import SqlDataHandler from '../lib/sql-data-handler'
+// const jsonDataHandler = JsonDataHandler.getInstance(COUNTRY_METRICS_FILE_PATH)
+const sqlDataHandler = SqlDataHandler.getInstance();
+const countryData = new CountryData(sqlDataHandler)
 
 export const getCountries = async (req: Request, res: Response, next: NextFunction) => {
   try {

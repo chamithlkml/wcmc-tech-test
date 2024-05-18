@@ -52,7 +52,5 @@ export type LandCoverType = {
 
 export type MetricType = {
   country: string,
-  metrics: [
-    any
-  ]
+  metrics: Record<string, string | number>[]
 }

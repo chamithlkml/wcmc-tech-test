@@ -8,8 +8,10 @@ const Metrics = ({metrics}: MetricsPropsType) => {
   const [landCoverData, setLandCoverData] = useState<null | LandCoverType>(null);
 
   useEffect(() => {
+
+    // Protected Areas
     const protAreasDataArr = metrics.metrics?.filter((m) => {
-      return m.name === 'Protected Areas';
+      return m.metric_label === 'Protected Areas';
     })!
     if(protAreasDataArr!.length > 0){
       console.log('prot area', protAreasDataArr![0]);
@@ -17,7 +19,7 @@ const Metrics = ({metrics}: MetricsPropsType) => {
     }
     // Land Cover
     const landCoverDataArr = metrics.metrics?.filter((m) => {
-      return m.name === 'Land Cover';
+      return m.metric_label === 'Land Cover';
     })
     if(landCoverDataArr!.length > 0){
       console.log('land cover', landCoverDataArr![0]);
@@ -32,25 +34,25 @@ const Metrics = ({metrics}: MetricsPropsType) => {
       {
         protAreasData && 
         <ProtectedAreas
-          marine={protAreasData.results.marine_area_km2} 
-          terrestial={protAreasData.results.terrestrial_area_km2}
-          unprot={protAreasData.results.unprotected_area_km2} 
-          total={protAreasData.results.area_km2}
+          marine={protAreasData.marine_area_km2} 
+          terrestial={protAreasData.terrestrial_area_km2}
+          unprot={protAreasData.unprotected_area_km2} 
+          total={protAreasData.area_km2}
         />
       }
       {
         landCoverData &&
         <LandCover
-          forest={landCoverData.results.data.forest}
-          sparseVegetation={landCoverData.results.data.sparse_vegetation}
-          grassland={landCoverData.results.data.grassland}
-          wetland={landCoverData.results.data.wetland}
-          water={landCoverData.results.data.water}
-          permSnowIce={landCoverData.results.data.permanent_snow_and_ice}
-          bare={landCoverData.results.data.bare}
-          agriculture={landCoverData.results.data.agriculture}
-          settlements={landCoverData.results.data.settlements}
-          total={landCoverData.results.area_km2}
+          forest={landCoverData.forest}
+          sparseVegetation={landCoverData.sparse_vegetation}
+          grassland={landCoverData.grassland}
+          wetland={landCoverData.wetland}
+          water={landCoverData.water}
+          permSnowIce={landCoverData.permanent_snow_and_ice}
+          bare={landCoverData.bare}
+          agriculture={landCoverData.agriculture}
+          settlements={landCoverData.settlements}
+          total={landCoverData.area_km2}
         />
       }
     </div>
