@@ -51,7 +51,13 @@ class JsonDataHandler implements DataHandleable{
       })!
     }
 
-    return countryMetricsArr?.map((dataObj) => dataObj.country )!
+    const countries = countryMetricsArr?.map((dataObj) => dataObj.country )!
+    // Removing duplicates
+    let uniqueCountries = [...new Set(countries)];
+    // Sorted
+    uniqueCountries.sort();
+    
+    return uniqueCountries;
   }
 
   async getMetrics(country: string): Promise<MetricType> {

@@ -10,13 +10,7 @@ class CountryData implements CountriesRetrievable {
   }
 
   async getCountries(prefix: string): Promise<string[]> {
-    const countries = await this.dataHandler.getCountries(prefix);
-    // Removing duplicates
-    let uniqueCountries = [...new Set(countries)];
-    // Sorted
-    uniqueCountries.sort();
-    
-    return uniqueCountries;
+    return await this.dataHandler.getCountries(prefix);
   }
 }
 

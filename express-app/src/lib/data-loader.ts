@@ -1,5 +1,5 @@
 import DataLoadable from "../interfaces/data-loadable";
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { CountryMetricType, CountryType, MetricDataType } from "../types";
 
 const prisma = new PrismaClient()
