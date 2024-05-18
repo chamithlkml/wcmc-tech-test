@@ -62,7 +62,10 @@ class SqlDataHandler implements DataHandleable{
   async getMetrics(country: string): Promise<MetricType> {
     
     const countryMetricRecords = await this.prisma.$queryRawUnsafe(
-      `SELECT cm.name AS metric_name, cm.value AS metric_value, m.name AS metric, c.name AS country FROM country_metrics AS cm INNER JOIN metrics AS m on cm.metricId = m.id INNER JOIN countries AS c on cm.countryId = c.id WHERE c.name = ?;`,
+      `SELECT cm.name AS metric_name, cm.value AS metric_value, m.name AS metric, c.name AS country 
+      FROM country_metrics AS cm INNER JOIN metrics AS m on cm.metricId = m.id 
+      INNER JOIN countries AS c on cm.countryId = c.id
+      WHERE c.name = ?;`,
       country
     )
 
