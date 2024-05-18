@@ -4,6 +4,7 @@ import { InternalException } from "../exceptions/internal-exception";
 import DataHandleable from "../interfaces/data-handleable";
 import CountryData from './country-data';
 import { MetricData } from '../interfaces/metric-data';
+import { MetricType } from '../types';
 
 class JsonDataHandler implements DataHandleable{
   private filePath: string;
@@ -53,7 +54,7 @@ class JsonDataHandler implements DataHandleable{
     return countryMetricsArr?.map((dataObj) => dataObj.country )!
   }
 
-  async getMetrics(country: string): Promise<object> {
+  async getMetrics(country: string): Promise<MetricType> {
     await this.loadDataFromFile()
 
     const countryDataArr = this.countryMetrics?.filter((dataObj) => {
@@ -64,7 +65,7 @@ class JsonDataHandler implements DataHandleable{
       throw new HttpException('No metrics found', ErrorCode.DATA_NOT_FOUND, 404, 'Data not found');
     }
     
-    return countryDataArr[0]
+    return countryDataArr[0] as MetricType
   }
 }
 
