@@ -5,11 +5,11 @@ import config from '../config.json'
 import Metrics from './metrics';
 import AlertMessage from './alert-message';
 import CountrySuggestion from './country-suggestion';
+import { MetricsType } from '../types/metrics-props';
 
 const Country = () => {
   const [typedCountry, setTypedCountry] = useState('')
-  const [showMetrics, setShowMetrics] = useState(false);
-  const [metrics, setMetrics] = useState({});
+  const [metricsData, setMetricsData] = useState<MetricsType | null>(null);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [countrySuggestions, setCountrySuggestions] = useState<string[]>([]);
 
@@ -20,8 +20,7 @@ const Country = () => {
         setErrorResponse(data.message)
       }else{
         setErrorMessage(null)
-        setShowMetrics(true);
-        setMetrics(data)
+        setMetricsData(data)
       }
     } catch (error) {
       console.log('Fetching metrics', error);
@@ -38,8 +37,7 @@ const Country = () => {
 
   const setErrorResponse = (message: string) => {
     setErrorMessage(message)
-    setShowMetrics(false);
-    setMetrics({})
+    setMetricsData(null)
   }
 
   const handleChange = async(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,11 +111,7 @@ const Country = () => {
         <div className='col-md-4'></div>
       </div>
       <div className='row mt-4'>
-        <div className='col-md-4'></div>
-        <div className="col-md-4">
-          {showMetrics && <Metrics metrics={metrics} />}
-        </div>
-        <div className='col-md-4'></div>
+        {metricsData && <Metrics metrics={metricsData} />}
       </div>
       <div className='row mt-4'>
         <div className='col-md-4'></div>
