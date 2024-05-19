@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "60ced600-fdec-4cc2-b8e7-ef4990274e8f",
+		"name": "wcmc-tech-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6422419"
+	},
+	"item": [
+		{
+			"name": "getCountries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "SECRET12345",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/countries?prefix=Sri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"countries"
+					],
+					"query": [
+						{
+							"key": "prefix",
+							"value": "Sri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCountryMetrics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "SECRET12345",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/metrics?country=Sri Lanka",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Sri Lanka"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
