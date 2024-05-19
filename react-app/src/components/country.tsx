@@ -30,7 +30,7 @@ const Country = () => {
 
   const selectCountry = async(country: string) => {
     setCountrySuggestions([]);
-    
+    setTypedCountry(country)
 
     await loadMetrics(country);
   }
@@ -88,7 +88,7 @@ const Country = () => {
           <Form onSubmit={handleSubmission}>
             <Form.Group controlId="Country">
               <Form.Label>Country</Form.Label>
-              <Form.Control type="text" placeholder='Country' onChange={handleChange} />
+              <Form.Control type="text" placeholder='Country' onChange={handleChange} value={typedCountry} />
             </Form.Group>
           </Form>
         </div>
