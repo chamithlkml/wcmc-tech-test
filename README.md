@@ -15,6 +15,7 @@
 ### Start express-app
 
 - `docker exec -it app sh` to login to the docker container
+- `npx prisma migrate dev` to run pending migrations
 - `cd express-app`
 - `npm run load` to load json data from country-metrics.json to Database in `features/activity-3.1`
 - `npm run dev`

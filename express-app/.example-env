@@ -1,3 +1,4 @@
 PORT=8080
 COUNTRY_METRICS_FILE_PATH=/app/country-metrics.json
 DATABASE_URL="mysql://root:testpassword@mysqldb:3306/testdb"
+REACT_APP_PORT=3000
