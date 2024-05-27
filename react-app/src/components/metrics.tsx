@@ -8,7 +8,8 @@ const Metrics = ({metrics}: MetricsPropsType) => {
   const [landCoverData, setLandCoverData] = useState<null | LandCoverType>(null);
 
   useEffect(() => {
-
+    setProtAreasData(null);
+    setLandCoverData(null);
     // Protected Areas
     const protAreasDataArr = metrics.metrics?.filter((m) => {
       return m.metric_label === 'Protected Areas';

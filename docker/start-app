@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-cd /app/express-app && npm install
-cd /app/express-app && npx prisma migrate dev
+cd /app/express-app && npm install && npx prisma migrate dev
 cd /app/react-app && npm install --legacy-peer-deps
 
 tail -f /dev/null
